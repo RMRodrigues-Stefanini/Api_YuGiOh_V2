@@ -23,7 +23,7 @@ public class CartaController {
 
     private final CardServices cardServices;
 
-    private final CartaMapper cartaMapper = CartaMapper.getInstance();
+    private final CartaMapper cartaMapper;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity getCardById(@PathVariable("id") long id) {

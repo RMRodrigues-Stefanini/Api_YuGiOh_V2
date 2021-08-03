@@ -5,6 +5,7 @@ import com.stefanini.YuGiOh.YuGiOhAPI.Entities.User;
 import com.stefanini.YuGiOh.YuGiOhAPI.Services.UserServices;
 import com.stefanini.YuGiOh.YuGiOhAPI.mapper.UserMapper;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,21 +13,23 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@Slf4j
 @CrossOrigin
 @RestController
 @RequestMapping("/users")
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class UserController {
 
-    private final UserMapper userMapper = UserMapper.getInstance();
+    private final UserMapper userMapper;
 
     private UserServices userServices;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity getUserById(@PathVariable("id") long id) {
         User usersData = userServices.findById(id);
+        UserDTO userDTO = userMapper.toDTO(usersData);
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(usersData);
+            return ResponseEntity.status(HttpStatus.OK).body(userDTO);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }

@@ -13,9 +13,8 @@ import javax.persistence.*;
 public class UserType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long  idUT;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long  idUT;
 
-    @Column
     private String nameUT;
 }

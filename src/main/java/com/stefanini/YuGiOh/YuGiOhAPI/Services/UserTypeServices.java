@@ -5,11 +5,12 @@ package com.stefanini.YuGiOh.YuGiOhAPI.Services;
 import com.stefanini.YuGiOh.YuGiOhAPI.Entities.UserType;
 import com.stefanini.YuGiOh.YuGiOhAPI.Repository.UserTypeRepository;
 import com.sun.istack.NotNull;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserTypeServices {
 
@@ -18,7 +19,7 @@ public class UserTypeServices {
 
     public List<UserType> findAll() {return userTypeRepository.findAll();}
 
-    public UserType findById(Long id){ return checkId (id);}
+    public Optional<UserType> findById(Long id){ return userTypeRepository.findById (id);}
 
     public UserType save(UserType userType) { return (UserType) userTypeRepository.save(userType);}
 

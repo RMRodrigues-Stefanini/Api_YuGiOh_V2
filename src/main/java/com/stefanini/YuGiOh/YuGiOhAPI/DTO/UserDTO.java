@@ -23,5 +23,8 @@ public class UserDTO {
     private String cpf;
 
     @JsonProperty("type")
-    private UserType userType;
+    private long userType;
+
+
+
 }
