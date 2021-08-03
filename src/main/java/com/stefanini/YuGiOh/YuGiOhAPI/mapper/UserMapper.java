@@ -8,7 +8,7 @@ import com.stefanini.YuGiOh.YuGiOhAPI.Services.UserTypeServices;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +19,20 @@ import java.util.Optional;
 @Service
 public class UserMapper {
 
-    private UserTypeServices userTypeServices;
+    private final UserTypeServices userTypeServices;
+    private final UserDTO userDTO;
 
 
 
     public UserDTO toDTO(User user) {
-        ModelMapper modelMapper = new ModelMapper();
-        UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-        log.info("UserDTO : " + userDTO );
+        // ModelMapper modelMapper = new ModelMapper();
+       // UserDTO userDTO = modelMapper.map(user, UserDTO.class);
         userDTO.setUserType(user.getUserType().getIdUT());
+        userDTO.setNameUser(user.getNameUser());
+        userDTO.setIdUser(user.getIdUser());
+        userDTO.setCpf(user.getCpf());
+        userDTO.setLogin(user.getLogin());
+        log.info("UserDTO : " + userDTO  );
         return userDTO;
     }
 

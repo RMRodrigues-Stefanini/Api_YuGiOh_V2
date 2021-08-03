@@ -21,11 +21,16 @@ public class CartaMapper {
 
 
     private final CardTypeServices cardTypeServices;
+    private final CardDTO cardDTO;
 
     public CardDTO toDTO(Card card) {
-        ModelMapper modelMapper = new ModelMapper();
-        CardDTO cardDTO = modelMapper.map(card, CardDTO.class);
         cardDTO.setCardType(card.getCardType().getIdCT());
+        cardDTO.setNameCard(card.getNameCard());
+        cardDTO.setIdCard(card.getIdCard());
+        cardDTO.setAtk(card.getAtk());
+        cardDTO.setDef(card.getDef());
+        cardDTO.setImg(card.getImg());
+        log.info("CardDTO : " + cardDTO  );
         return cardDTO;
         }
 

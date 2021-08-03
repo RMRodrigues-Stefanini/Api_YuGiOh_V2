@@ -5,14 +5,17 @@ import com.stefanini.YuGiOh.YuGiOhAPI.Entities.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 
+@Service
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
 
+    @JsonProperty("id")
     private Long idUser;
 
     @JsonProperty("name")

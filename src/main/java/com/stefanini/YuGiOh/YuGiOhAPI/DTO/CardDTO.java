@@ -5,9 +5,11 @@ import com.stefanini.YuGiOh.YuGiOhAPI.Entities.CardType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 
+@Service
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,11 +17,16 @@ public class CardDTO {
 
     @JsonProperty("id")
     private Long  idCard;
+
     @JsonProperty("name")
     private String nameCard;
+
     private int atk;
+
     private int def;
+
     private String img;
+
     @JsonProperty("id_tipo")
     private long cardType;
 }

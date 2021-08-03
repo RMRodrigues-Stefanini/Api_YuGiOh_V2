@@ -2,6 +2,7 @@ package com.stefanini.YuGiOh.YuGiOhAPI.Controllers;
 
 
 import com.stefanini.YuGiOh.YuGiOhAPI.DTO.CardDTO;
+import com.stefanini.YuGiOh.YuGiOhAPI.DTO.UserDTO;
 import com.stefanini.YuGiOh.YuGiOhAPI.Entities.Card;
 import com.stefanini.YuGiOh.YuGiOhAPI.Entities.CardType;
 import com.stefanini.YuGiOh.YuGiOhAPI.Services.CardServices;
@@ -28,8 +29,9 @@ public class CartaController {
     @GetMapping(value = "/{id}")
     public ResponseEntity getCardById(@PathVariable("id") long id) {
         Card cardsData = cardServices.findById(id);
+        CardDTO cardDTO = cartaMapper.toDTO(cardsData);
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(cardsData);
+            return ResponseEntity.status(HttpStatus.OK).body(cardDTO);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Carta nao encontrada");
         }

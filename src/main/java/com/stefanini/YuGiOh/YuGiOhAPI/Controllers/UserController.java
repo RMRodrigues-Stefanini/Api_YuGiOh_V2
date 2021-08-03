@@ -22,7 +22,7 @@ public class UserController {
 
     private final UserMapper userMapper;
 
-    private UserServices userServices;
+    private final UserServices userServices;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity getUserById(@PathVariable("id") long id) {
